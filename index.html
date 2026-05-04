@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ContainerBooking.com | Digital Container Booking</title>
+  <meta name="description" content="ContainerBooking.com helps importers and exporters request, compare and manage container freight bookings with a faster digital workflow." />
+
+  <style>
+    :root {
+      --bg: #050505;
+      --bg-soft: #101010;
+      --card: rgba(255, 255, 255, 0.06);
+      --card-border: rgba(255, 255, 255, 0.12);
+      --text: #f5f5f5;
+      --muted: #a3a3a3;
+      --white: #ffffff;
+      --accent: #e9e9e9;
+      --radius: 24px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      background: radial-gradient(circle at top left, #202020 0, #050505 34%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(100% - 40px, var(--max-width));
+      margin: 0 auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      background: rgba(5, 5, 5, 0.7);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: -0.04em;
+      font-size: 1.1rem;
+    }
+
+    .logo-mark {
+      width: 34px;
+      height: 34px;
+      border: 1px solid var(--white);
+      border-radius: 10px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .logo-mark::before,
+    .logo-mark::after {
+      content: "";
+      position: absolute;
+      background: var(--white);
+      opacity: 0.95;
+    }
+
+    .logo-mark::before {
+      width: 20px;
+      height: 1px;
+    }
+
+    .logo-mark::after {
+      width: 1px;
+      height: 20px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 999px;
+      padding: 12px 20px;
+      font-weight: 700;
+      transition: 0.2s ease;
+      border: 1px solid rgba(255,255,255,0.2);
+    }
+
+    .btn-primary {
+      background: var(--white);
+      color: #000;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 40px rgba(255,255,255,0.16);
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,0.06);
+      color: var(--white);
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.12);
+    }
+
+    .hero {
+      padding: 110px 0 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 64px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      margin-bottom: 22px;
+      background: rgba(255,255,255,0.04);
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 6.8rem);
+      line-height: 0.9;
+      letter-spacing: -0.08em;
+      max-width: 850px;
+    }
+
+    .hero p {
+      max-width: 620px;
+      color: var(--muted);
+      font-size: 1.15rem;
+      margin: 28px 0 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .dashboard-card {
+      border: 1px solid var(--card-border);
+      border-radius: 32px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.1), rgba(255,255,255,0.03));
+      box-shadow: 0 30px 100px rgba(0,0,0,0.5);
+      padding: 22px;
+      min-height: 460px;
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .dot {
+      width: 8px;
+      height: 8px;
+      background: #ffffff;
+      border-radius: 999px;
+      box-shadow: 0 0 18px rgba(255,255,255,0.9);
+    }
+
+    .route-box {
+      margin-top: 24px;
+      border-radius: 22px;
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(255,255,255,0.1);
+      padding: 22px;
+    }
+
+    .route-line {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+      margin: 20px 0;
+    }
+
+    .port span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .port strong {
+      font-size: 1.4rem;
+      letter-spacing: -0.04em;
+    }
+
+    .line {
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, #fff, transparent);
+      opacity: 0.45;
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .metric {
+      border-radius: 18px;
+      padding: 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .metric span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .metric strong {
+      display: block;
+      margin-top: 6px;
+      font-size: 1.4rem;
+      letter-spacing: -0.04em;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: -0.07em;
+      margin-bottom: 18px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 28px;
+      min-height: 250px;
+    }
+
+    .feature-card h3 {
+      font-size: 1.35rem;
+      letter-spacing: -0.04em;
+      margin-bottom: 14px;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+    }
+
+    .number {
+      display: grid;
+      place-items: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.1);
+      margin-bottom: 36px;
+      color: var(--white);
+      font-weight: 700;
+    }
+
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .process-step {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: var(--radius);
+      padding: 24px;
+    }
+
+    .process-step span {
+      color: var(--muted);
+      font-size: 0.85rem;
+    }
+
+    .process-step h3 {
+      margin: 18px 0 10px;
+      letter-spacing: -0.04em;
+    }
+
+    .process-step p {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .cta {
+      padding: 90px 0;
+    }
+
+    .cta-box {
+      border-radius: 36px;
+      padding: 56px;
+      background: var(--white);
+      color: #000;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+    }
+
+    .cta-box h2 {
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      line-height: 1;
+      letter-spacing: -0.07em;
+      margin-bottom: 18px;
+    }
+
+    .cta-box p {
+      color: #4b4b4b;
+      max-width: 680px;
+    }
+
+    .cta-box .btn-primary {
+      background: #000;
+      color: #fff;
+    }
+
+    footer {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 30px 0;
+      color: var(--muted);
+      font-size: 0.9rem;
+    }
+
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .cta-box {
+        grid-template-columns: 1fr;
+      }
+
+      .features,
+      .process {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        width: min(100% - 24px, var(--max-width));
+      }
+
+      .hero {
+        padding: 72px 0 50px;
+      }
+
+      .features,
+      .process,
+      .metric-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta-box {
+        padding: 34px 24px;
+      }
+
+      .route-line {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .line {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a href="#" class="logo" aria-label="ContainerBooking.com home">
+        <span class="logo-mark"></span>
+        <span>ContainerBooking.com</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Main navigation">
+        <a href="#solution">Solution</a>
+        <a href="#workflow">Workflow</a>
+        <a href="#contact">Contact</a>
+        <a class="btn btn-primary" href="mailto:info@containerbooking.com">Request access</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">Digital freight workflow for container shipping</span>
+          <h1>Book containers without the operational noise.</h1>
+          <p>
+            ContainerBooking.com gives importers, exporters and logistics teams a cleaner way to request container freight, structure shipment data and move faster from enquiry to booking.
+          </p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:info@containerbooking.com">Request access</a>
+            <a class="btn btn-secondary" href="#solution">View solution</a>
+          </div>
+        </div>
+
+        <aside class="dashboard-card" aria-label="Booking dashboard preview">
+          <div class="card-top">
+            <span>Booking preview</span>
+            <span class="status"><span class="dot"></span> Live workflow</span>
+          </div>
+
+          <div class="route-box">
+            <div class="route-line">
+              <div class="port">
+                <span>POL</span>
+                <strong>Shanghai</strong>
+              </div>
+              <div class="line"></div>
+              <div class="port">
+                <span>POD</span>
+                <strong>Rotterdam</strong>
+              </div>
+            </div>
+
+            <div class="metric-grid">
+              <div class="metric">
+                <span>Container</span>
+                <strong>40' HC</strong>
+              </div>
+              <div class="metric">
+                <span>Status</span>
+                <strong>Quoted</strong>
+              </div>
+              <div class="metric">
+                <span>Mode</span>
+                <strong>FCL</strong>
+              </div>
+              <div class="metric">
+                <span>Workflow</span>
+                <strong>Digital</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="route-box">
+            <div class="metric">
+              <span>Next action</span>
+              <strong>Confirm sailing option</strong>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section id="solution">
+      <div class="container">
+        <div class="section-title">
+          <h2>A sharper front-end for container freight.</h2>
+          <p>
+            Replace scattered emails, unclear shipment details and manual follow-ups with one structured booking workflow.
+          </p>
+        </div>
+
+        <div class="features">
+          <article class="feature-card">
+            <div class="number">01</div>
+            <h3>Structured booking requests</h3>
+            <p>Capture origin, destination, container type, cargo details and timing in one clean process before the freight team starts quoting.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="number">02</div>
+            <h3>Clearer communication</h3>
+            <p>Reduce back-and-forth by making shipment requirements visible from the start, including commercial and operational constraints.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="number">03</div>
+            <h3>Faster decision-making</h3>
+            <p>Move from request to option to confirmation with less friction, especially when rates, capacity or port conditions shift.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="workflow">
+      <div class="container">
+        <div class="section-title">
+          <h2>From freight request to booking confirmation.</h2>
+          <p>
+            Built for companies that need practical visibility, not another complicated logistics platform.
+          </p>
+        </div>
+
+        <div class="process">
+          <article class="process-step">
+            <span>Step 01</span>
+            <h3>Submit shipment</h3>
+            <p>Add route, container type, cargo profile and required timing.</p>
+          </article>
+
+          <article class="process-step">
+            <span>Step 02</span>
+            <h3>Validate details</h3>
+            <p>Check missing data before the booking request enters the workflow.</p>
+          </article>
+
+          <article class="process-step">
+            <span>Step 03</span>
+            <h3>Compare options</h3>
+            <p>Review available freight options based on rate, route and reliability.</p>
+          </article>
+
+          <article class="process-step">
+            <span>Step 04</span>
+            <h3>Confirm booking</h3>
+            <p>Lock in the selected option and keep the next steps aligned.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="cta">
+      <div class="container">
+        <div class="cta-box">
+          <div>
+            <h2>Ready to make container booking cleaner?</h2>
+            <p>
+              Request access or contact the team to discuss how ContainerBooking.com can support your container freight workflow.
+            </p>
+          </div>
+          <a class="btn btn-primary" href="mailto:info@containerbooking.com">info@containerbooking.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <span>© 2026 ContainerBooking.com</span>
+      <span>Digital container booking workflow</span>
+    </div>
+  </footer>
+</body>
+</html>
