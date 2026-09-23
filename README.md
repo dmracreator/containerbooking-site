@@ -1,12 +1,12 @@
-# containerbooking.com — website
+# containerbooking.com website
 
 Source of the live site at <https://containerbooking.com>, hosted on GitHub Pages from
 <https://github.com/dmracreator/containerbooking-site> (branch `main`, root folder).
 
 ## Files
-- `index.html` — the whole site (HTML, CSS, JS and graphics inline; no build step).
-- `CNAME` — custom domain for GitHub Pages (`containerbooking.com`). Don't remove it.
-- `.nojekyll` — tells GitHub Pages to serve the files as they are.
+- `index.html`: the whole site (HTML, CSS, JS and graphics inline; no build step).
+- `CNAME`: custom domain for GitHub Pages (`containerbooking.com`). Don't remove it.
+- `.nojekyll`: tells GitHub Pages to serve the files as they are.
 
 ## Update the live site
 **Web upload:** on the repo page choose *Add file → Upload files*, drag in the changed
