@@ -298,6 +298,15 @@
   .innov h3{font-size:23px;margin:14px 0 12px;color:#fff}
   .innov p{color:rgba(255,255,255,.8);font-size:15px}
   .innov p + p{margin-top:12px}
+  .innov.esg{grid-column:1/-1;background:linear-gradient(135deg,#123d33,#0f2a24)}
+  .innov.esg .k{color:#7fe0b4}
+  .innov.esg .glow{background:radial-gradient(circle,rgba(127,224,180,.22),transparent 70%)}
+  .innov.esg .esg-body{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:start}
+  @media(max-width:820px){.innov.esg .esg-body{grid-template-columns:1fr;gap:20px}}
+  .esg-steps{list-style:none;display:grid;gap:10px;margin:0;padding:0}
+  .esg-steps li{display:flex;gap:12px;align-items:center;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:12px;padding:12px 14px;font-size:14.5px;font-weight:700}
+  .esg-steps .n{width:26px;height:26px;border-radius:50%;background:#7fe0b4;color:#0f2a24;display:grid;place-items:center;font-size:12.5px;font-weight:900;flex:none}
+  .innov.esg .btn{margin-top:18px}
   .innov .glow{position:absolute;width:220px;height:220px;border-radius:50%;right:-60px;top:-60px;background:radial-gradient(circle,rgba(255,107,0,.3),transparent 70%)}
   .innov.green .glow{background:radial-gradient(circle,rgba(255,138,61,.26),transparent 70%)}
 
@@ -541,7 +550,7 @@
   .nc-sent.show{display:block;animation:fadeup .4s ease}
 
   /* richer footer */
-  .foot-top{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;padding-bottom:30px;border-bottom:1px solid var(--line)}
+  .foot-top{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;padding-bottom:30px;border-bottom:1px solid var(--line)}
   @media(max-width:700px){.foot-top{grid-template-columns:1fr;gap:26px}}
   .foot-brand .logo{margin-bottom:12px}
   .foot-tag{font-size:14.5px;color:var(--ink-soft);max-width:44ch;line-height:1.5}
@@ -731,7 +740,7 @@
             <a class="xcard reveal" href="#/platform" data-link><div class="xk">Platform</div><h3>One structured workflow</h3><p>From first request to confirmed booking — how the platform replaces the inbox.</p><span class="go">Open platform →</span></a>
             <a class="xcard reveal" href="#/services" data-link><div class="xk">Services</div><h3>Seven services, one operator</h3><p>Sea, air, road, rail, special cargo, warehousing and customs — door to door.</p><span class="go">See services →</span></a>
             <a class="xcard reveal" href="#/global-reach" data-link><div class="xk">Global reach</div><h3>Six continents, one contact</h3><p>Our worldwide network, memberships and certifications.</p><span class="go">View reach →</span></a>
-            <a class="xcard reveal" href="#/innovation" data-link><div class="xk">Innovation</div><h3>Built for what’s next</h3><p>Big data, AI and the rising complexity of global trade.</p><span class="go">Read the vision →</span></a>
+            <a class="xcard reveal" href="#/innovation" data-link><div class="xk">Innovation</div><h3>Built for what’s next</h3><p>Big data, AI, global trade complexity and our ESG commitment.</p><span class="go">Read the vision →</span></a>
             <a class="xcard reveal" href="#/investors" data-link><div class="xk">Investors</div><h3>The growth opportunity</h3><p>A profitable platform ready for its next phase — and how to take part.</p><span class="go">Investor case →</span></a>
             <a class="xcard reveal" href="#/" data-link data-scroll="estimator"><div class="xk">Get started</div><h3>Estimate &amp; book</h3><p>Try the route estimator and send a booking request in one step.</p><span class="go">Estimate a route →</span></a>
           </div>
@@ -1056,7 +1065,7 @@
       <div class="page-hero"><div class="lanes-bg" aria-hidden="true"></div>
         <div class="wrap inner"><span class="eyebrow">Where the market is heading</span>
           <h1>Built for the forces reshaping global trade.</h1>
-          <p>Two shifts define the next decade of forwarding. ContainerBooking.com is positioned on the right side of both.</p>
+          <p>Three forces define the next decade of forwarding: data, trade complexity and sustainability. ContainerBooking.com is positioned on the right side of all three.</p>
         </div>
       </div>
 
@@ -1072,6 +1081,21 @@
               <h3>Flexibility as a standing capability</h3>
               <p>As economies negotiate divergent import taxes, supply chains, costs and compliance grow more complex. Conflicting standards mean shippers will demand far more flexibility from their forwarders.</p>
               <p>Our AEO status and in-house customs desk turn that complexity into a service others can’t easily match — clearance stays fast even as the rules shift.</p>
+            </div>
+            <div class="innov esg reveal" id="esg"><div class="glow"></div><div class="k">03 · Sustainability &amp; ESG</div>
+              <h3>Moving freight with a smaller footprint</h3>
+              <div class="esg-body">
+                <div>
+                  <p>ESG is at the core of our corporate mission, and the environmental side weighs heaviest. Deep-sea shipping keeps global trade moving, but it carries a real carbon cost — one that shippers are increasingly expected to measure, reduce and report.</p>
+                  <p>That is why we back <b>Trees for Transport</b>, a project dedicated to sustainable logistics. It calculates the CO₂ emissions of deep-sea transport and offsets them through carbon credits, giving shippers a concrete way to act on their climate goals and support their ESG reporting.</p>
+                  <a class="btn btn-primary" href="https://treesfortransport.com" target="_blank" rel="noopener">Visit treesfortransport.com ↗</a>
+                </div>
+                <ol class="esg-steps" aria-label="How Trees for Transport works">
+                  <li><span class="n">1</span>Calculate your transport emissions</li>
+                  <li><span class="n">2</span>Offset them with carbon credits</li>
+                  <li><span class="n">3</span>Receive a unique certificate</li>
+                </ol>
+              </div>
             </div>
           </div>
         </div>
@@ -1291,6 +1315,11 @@
         <a href="#/investors" data-link>Investors</a>
         <a href="#/contact" data-link>Contact</a>
       </nav>
+      <nav class="foot-nav" aria-label="Sustainability">
+        <div class="fh">Sustainability</div>
+        <a href="#/innovation" data-link>Our ESG commitment</a>
+        <a href="https://treesfortransport.com" target="_blank" rel="noopener">Trees for Transport ↗</a>
+      </nav>
     </div>
     <div class="wrap foot-bottom">
       <div class="muted">© 2026 ContainerBooking.com</div>
@@ -1334,7 +1363,7 @@
     platform:"One structured workflow from first request to confirmed booking — with real-time tracking and alerts built in.",
     services:"Seafreight, airfreight, road, rail, special cargo, warehousing and customs — seven services, one operator, door to door.",
     "global-reach":"Six continents, one point of contact — a certified, connected worldwide forwarding network.",
-    innovation:"Built for big data, AI and the rising complexity of global trade.",
+    innovation:"Built for big data, AI, the rising complexity of global trade and a lower-carbon supply chain.",
     investors:"A rapidly growing, profitable freight-booking platform ready for its next growth phase.",
     contact:"Talk to a real forwarding team — a quote, a shipment, a partnership or an investment enquiry.",
     quote:"Your indicative freight quote, with a locked first-booking price for new customers."
